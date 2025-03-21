@@ -1,0 +1,22 @@
+<app-header></app-header>
+<div class="container">
+    <div class="row align-items-center justify-content-center p-5 text-light fw-bolder bg-success fs-1">Your Recipe Collection!!</div>
+    <div class="row my-5">
+        @if (allrecipes.length>0) {
+            @for (recipe of allrecipes; track $index) {
+                <div class="col-lg-3">
+                    <div class="p-3">
+                        <img routerLink="/recipe/{{recipe.recipeId}}/view" class="card-img-top" [src]="recipe.image" alt="">
+                        <div class="card-body d-flex align-items-center justify-content-between">
+                            <h5 class="card-title">{{recipe.name}}</h5>
+                            <button (click)="removeRecipe(recipe._id)" class="btn"><i class="fa-solid fa-trash text-danger"></i></button>
+                        </div>
+                    </div>
+                </div>
+            }
+        }@else {
+            <div>Your Recipe Collection is Empty!!!</div>
+        }
+    </div>
+</div>
+<app-footer></app-footer>
